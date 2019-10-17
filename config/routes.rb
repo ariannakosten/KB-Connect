@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :students controllers: { omniauth_callbacks: 'omniauth' }
+  devise_for :students 
+  resources :omniauth
   resources :klasses
   resources :instructors
   resources :students
