@@ -3,17 +3,12 @@ class Student < ApplicationRecord
   has_many :klasses, through: :student_enrollments
   has_many :instructors, through: :klasses
 
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+  validates :first_name, :last_name, :email, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-  # devise :database_authenticatable, :registerable,
-  #        :recoverable, :rememberable, :validatable
-
-  devise  :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable,
-  :confirmable, :lockable, :timeoutable,
-  :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
 #create users from omniauth provider data entered in google/fb
 def self.create_from_provider_data(provider_data)
