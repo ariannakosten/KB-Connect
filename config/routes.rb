@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'home#main'
   devise_for :students 
   resources :omniauth
   resources :klasses

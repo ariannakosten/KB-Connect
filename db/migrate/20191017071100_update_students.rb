@@ -4,3 +4,4 @@ class UpdateStudents < ActiveRecord::Migration[6.0]
     add_column(:students, :uid, :string, limit: 500, null: false, default: '')
   end
 end
+
